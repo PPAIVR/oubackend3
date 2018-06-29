@@ -48,7 +48,7 @@ export const initialState: TodosState = {
     { id: uuid(), name: 'Check the other examples', done: false },
     {
       id: uuid(),
-      name: 'Use OuYuan Backend',
+      name: 'Use MQ1 Backend',
       done: false
     }
   ],

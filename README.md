@@ -1,4 +1,4 @@
-# OuYuan Backend 
+# MQ1 Backend 
 by [@krainet](https://github.com/krainet)
 
 

@@ -6,7 +6,7 @@
 const packageJson = require('../../package.json');
 
 export const environment = {
-  appName: 'OuYuan Backend',
+  appName: 'MQU Backend',
   envName: 'DEV',
   production: false,
   test: false,

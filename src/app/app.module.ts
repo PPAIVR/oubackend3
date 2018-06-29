@@ -11,6 +11,11 @@ import { StaticModule } from './static';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
+import {httpInterceptorProviders} from './http-interceptors/index';
+
+import {MatTableModule} from '@angular/material';
+import {CdkTableModule} from '@angular/cdk/table';
+
 
 @NgModule({
   imports: [
@@ -27,10 +32,15 @@ import { UsersComponent } from './users/users.component';
     SettingsModule,
 
     // app
-    AppRoutingModule
+    AppRoutingModule,
+
+    MatTableModule,
+    CdkTableModule
+
+
   ],
   declarations: [AppComponent, UsersComponent],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
