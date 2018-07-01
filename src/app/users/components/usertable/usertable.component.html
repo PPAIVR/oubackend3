@@ -1,0 +1,49 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> #Id </th>
+    <td mat-cell *matCellDef="let user"> {{user.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="username">
+    <th mat-header-cell *matHeaderCellDef> Username </th>
+    <td mat-cell *matCellDef="let user"> {{user.username}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="picture">
+    <th mat-header-cell *matHeaderCellDef> Picture </th>
+    <td mat-cell *matCellDef="let user">
+      <img src="{{user.url_foto_principal}}" class="circular--landscape">
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="subscriptions">
+    <th mat-header-cell *matHeaderCellDef> Suscripciones </th>
+    <td mat-cell *matCellDef="let user">
+      <ul>
+        <li ngfor="let sub of user.usersubscriptions">{{sub.date_end}}</li>
+      </ul>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="online">
+    <th mat-header-cell *matHeaderCellDef> Conectado </th>
+    <td mat-cell *matCellDef="let user"> {{user.use}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="buttons">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let user">
+      <button mat-icon-button color="primary">
+        <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn">
+        <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

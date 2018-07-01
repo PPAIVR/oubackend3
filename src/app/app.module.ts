@@ -15,6 +15,7 @@ import {httpInterceptorProviders} from './http-interceptors/index';
 
 import {MatTableModule} from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
+import { UsertableComponent } from './users/components/usertable/usertable.component';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 
 
   ],
-  declarations: [AppComponent, UsersComponent],
+  declarations: [AppComponent, UsersComponent, UsertableComponent],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })

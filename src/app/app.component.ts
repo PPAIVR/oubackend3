@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
   version = env.versions.app;
   year = new Date().getFullYear();
   // logo = require('../assets/logo.png');
-  logo = 'http://footage.framepool.com/shotimg/qf/543452664-bandera-china-ondear-ola-ninguno.jpg';
+  logo = 'http://ouyuan.love/logo.png';
   navigation = [
     { link: 'users', label: 'Usuarios' },
     { link: 'products', label: 'Productos' },

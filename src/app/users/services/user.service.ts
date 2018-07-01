@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import { User } from '../models/user';
+import {MyUser, MyResponse} from '../models/user';
 import { MessageService } from '../../common/services/message.service';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root',
@@ -18,19 +19,19 @@ export class UserService {
 
   // private api_url = `${environment.appConfig.API_URL}/api/v1/`;
   private usersUrl = 'http://apiouyuan.iaproject.net/apibackend/v1/' + 'users';  // URL to web api
+
+  private usersUlr2 = 'https://jsonplaceholder.typicode.com/users';
+
+
   private customHeaders = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
-    .set('authtoken', '20156960cc0e1590b80b739f9adb1e24')
+    .set('authtoken', 'aac07efceba3ad532faa280a9e3eb3be')
     .set('lang', 'es')
     .set('country', 'es');
 
-  /** GET users from the server */
-  getUsers (): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl, {headers: this.customHeaders})
-      .pipe(
-        tap(users => this.log(`fetched users`)),
-        catchError(this.handleError('getUsers', []))
-      );
+  getUsers (): Observable<MyUser[]> {
+    return this.http.get<MyResponse>(this.usersUrl,{headers: this.customHeaders})
+      .map(res => res.data);
   }
 
   /** Log a UserService message with the MessageService */
@@ -57,6 +58,11 @@ export class UserService {
       return of(result as T);
     };
   }
+
+
+
+
+
 
   // Deprecated
   /*getUsers(): Observable<User[]> {
