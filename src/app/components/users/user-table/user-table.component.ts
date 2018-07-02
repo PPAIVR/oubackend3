@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../services/user.service';
 import { DataSource } from '@angular/cdk/collections';
-import { Observable } from "rxjs/index";
-import { MyUser } from "../../models/user";
+import { Observable } from 'rxjs';
+import { MyUser } from '../models/user';
 
 @Component({
-  selector: 'anms-usertable',
-  templateUrl: './usertable.component.html',
-  styleUrls: ['./usertable.component.css']
+  selector: 'anms-user-table',
+  templateUrl: './user-table.component.html',
+  styleUrls: ['./user-table.component.css']
 })
-export class UsertableComponent implements OnInit {
+export class UserTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','username','subscriptions','picture','buttons'];
+  displayedColumns: string[] = ['id', 'username', 'subscriptions', 'picture', 'buttons'];
   dataSource = new UserDataSource(this.userService);
 
   constructor(private userService: UserService) { }

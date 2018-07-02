@@ -1,0 +1,14 @@
+.ou-chip {
+  max-width:65px;
+  max-height:25px;
+  text-align:center!important;
+}
+
+.ou-chip-list {
+  margin-top:15px;
+}
+
+mat-header-cell {
+  display:flex;
+  justify-content:flex-end;
+}

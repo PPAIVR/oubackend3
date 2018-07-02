@@ -1,7 +1,7 @@
 <mat-sidenav-container>
 
   <mat-sidenav #sidenav mode="push">
-    <div class="branding"><img [src]="logo"/> <span>Angular Starter</span></div>
+    <div class="branding"><img [src]="logo" class="img-logo-ou"/> <span>Angular Starter</span></div>
     <mat-nav-list>
       <a mat-list-item *ngFor="let item of navigationSideMenu" (click)="sidenav.close()"
          [routerLink]="[item.link]" routerLinkActive="active">
@@ -17,12 +17,12 @@
       </button>
 
       <span routerLink="" class="branding spacer center d-inline d-sm-none">
-          <img [src]="logo"/></span>
+          <img [src]="logo" class="img-logo-ou"/></span>
       <span routerLink=""
             class="branding spacer center d-none d-sm-inline d-md-none"><img
-        [src]="logo"/> Angular Starter</span>
+        [src]="logo" class="img-logo-ou"/> Angular Starter</span>
       <span routerLink="" class="branding spacer d-none d-md-inline"><img
-        [src]="logo"/> MQU Backend</span>
+        [src]="logo" class="img-logo-ou"/> MQU Backend</span>
 
       <span class="d-none d-md-inline">
           <button mat-button class="nav-button" *ngFor="let item of navigation"

@@ -22,7 +22,9 @@
     <th mat-header-cell *matHeaderCellDef> Suscripciones </th>
     <td mat-cell *matCellDef="let user">
       <ul>
-        <li ngfor="let sub of user.usersubscriptions">{{sub.date_end}}</li>
+        <!--<li ngfor="let sub of user.usersubscriptions">{{sub.date_end||'Ninguna'}}</li>-->
+        <!--<li><pre>{{user.usersubscriptions|json}}</pre></li>-->
+        <anms-user-subscriptions [usersubscriptions]="user.usersubscriptions"></anms-user-subscriptions>
       </ul>
     </td>
   </ng-container>

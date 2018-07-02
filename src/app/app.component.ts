@@ -40,11 +40,17 @@ export class AppComponent implements OnInit, OnDestroy {
   version = env.versions.app;
   year = new Date().getFullYear();
   // logo = require('../assets/logo.png');
-  logo = 'http://ouyuan.love/logo.png';
+  // logo = 'assets/ou-logo-new.png';
+  logo = 'https://www.mequedouno.com/assets/images/web/logo-mequedouno.png';
   navigation = [
-    { link: 'users', label: 'Usuarios' },
-    { link: 'products', label: 'Productos' },
-    { link: 'about', label: 'Acerca de' }
+    { link: 'appadmin', label: 'Administración' },
+    { link: 'employees', label: 'Usuarios' },
+    { link: 'customers', label: 'Clientes' },
+    { link: 'products', label: 'Productos/Servicios' },
+    { link: 'metrics', label: 'Métricas' },
+    { link: 'push', label: 'Push' },
+    { link: 'chat', label: 'Chat' }
+    /*{ link: 'about', label: 'Acerca de' }*/
   ];
   navigationSideMenu = [
     ...this.navigation,
@@ -61,8 +67,8 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   private static trackPageView(event: NavigationEnd) {
-    (<any>window).ga('set', 'page', event.urlAfterRedirects);
-    (<any>window).ga('send', 'pageview');
+    /*(<any>window).ga('set', 'page', event.urlAfterRedirects);
+    (<any>window).ga('send', 'pageview');*/
   }
 
   private static isIEorEdge() {
