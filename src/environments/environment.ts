@@ -26,5 +26,5 @@ export const environment = {
     API_URL : 'http://apiouyuan.iaproject.net/apibackend/v1',
     WEB_URL : 'http://apiouyuan.iaproject.net'
   },
-  HARD_TOKEN : 'c3ffa4d0e409ca8214a8153f8212b488'
+  HARD_TOKEN : 'aac07efceba3ad532faa280a9e3eb3be'
 };

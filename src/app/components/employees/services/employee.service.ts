@@ -33,4 +33,9 @@ export class EmployeeService {
       .map(res => res.data);
   }
 
+  getEmployees2 (): Observable<Employee[]> {
+    return this.http.get<EmployeeResponse>(this.usersUrl,{headers: this.customHeaders})
+      .map(res => res.data);
+  }
+
 }
