@@ -26,6 +26,10 @@ import {httpInterceptorProviders} from './http-interceptors/index';
 import {MatTableModule} from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 import { AppadminComponent } from './components/appadmin/appadmin.component';
+import { ConversationComponent } from './components/chat/conversation/conversation.component';
+import { KeysPipe } from './components/chat/pipes/keys.pipe';
+import { EmployeesTableComponent } from './components/employees/employees-table/employees-table.component';
+import { EmployeesTablePaginatedComponent } from './components/employees/employees-table-paginated/employees-table-paginated.component';
 
 
 
@@ -52,7 +56,7 @@ import { AppadminComponent } from './components/appadmin/appadmin.component';
   ],
   declarations: [AppComponent, UsersComponent, UserTableComponent,
     UserSubscriptionsComponent, UserTableSortingComponent, EmployeesComponent,
-    PushComponent, MetricsComponent, ProductsComponent, ServicesComponent, ChatComponent, AppadminComponent
+    PushComponent, MetricsComponent, ProductsComponent, ServicesComponent, ChatComponent, AppadminComponent, ConversationComponent, KeysPipe, EmployeesTableComponent, EmployeesTablePaginatedComponent
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

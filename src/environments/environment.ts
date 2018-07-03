@@ -6,7 +6,7 @@
 const packageJson = require('../../package.json');
 
 export const environment = {
-  appName: 'MQU Backend',
+  appName: 'MQ1 Backend',
   envName: 'DEV',
   production: false,
   test: false,
@@ -21,5 +21,10 @@ export const environment = {
       packageJson.dependencies['@fortawesome/fontawesome-free-webfonts'],
     angularCli: packageJson.devDependencies['@angular/cli'],
     typescript: packageJson.devDependencies['typescript']
-  }
+  },
+  appConfig:{
+    API_URL : 'http://apiouyuan.iaproject.net/apibackend/v1',
+    WEB_URL : 'http://apiouyuan.iaproject.net'
+  },
+  HARD_TOKEN : 'c3ffa4d0e409ca8214a8153f8212b488'
 };

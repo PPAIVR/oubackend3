@@ -7,7 +7,7 @@ export interface  MyUser {
 }
 
 export interface MyResponse {
-  message : boolean;
+  message: boolean;
   data: MyUser[];
   code: number;
 }

@@ -34,7 +34,7 @@ const routes: Routes = [
     path: 'employees',
     component: EmployeesComponent,
     data: {
-      title: 'Usuarios'
+      title: 'Administradores'
     }
   },
   {

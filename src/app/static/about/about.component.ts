@@ -20,7 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AboutComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  // logo = 'assets/ou-logo-new.png';
+  //logo = 'assets/ou-logo-new.png';
   logo = 'https://www.mequedouno.com/assets/images/web/logo-mequedouno.png';
   releaseButler = require('../../../assets/release-butler.png');
 

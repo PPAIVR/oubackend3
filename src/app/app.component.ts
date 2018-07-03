@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
   version = env.versions.app;
   year = new Date().getFullYear();
   // logo = require('../assets/logo.png');
-  // logo = 'assets/ou-logo-new.png';
+  //logo = 'assets/ou-logo-new.png';
   logo = 'https://www.mequedouno.com/assets/images/web/logo-mequedouno.png';
   navigation = [
     { link: 'appadmin', label: 'Administración' },

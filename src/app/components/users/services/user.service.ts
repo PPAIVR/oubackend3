@@ -6,8 +6,9 @@ import {MyUser, MyResponse} from '../models/user';
 import { MessageService } from '../../../common/services/message.service';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
+
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -16,16 +17,15 @@ import 'rxjs/add/operator/map';
 export class UserService {
 
   constructor(private messageService: MessageService,  private http: HttpClient) { }
-
-  // private api_url = `${environment.appConfig.API_URL}/api/v1/`;
-  private usersUrl = 'http://apiouyuan.iaproject.net/apibackend/v1/' + 'users';  // URL to web api
-
+  private api_url = `${environment.appConfig.API_URL}`;
+  private api_token = `${environment.HARD_TOKEN}`;
+  private usersUrl = this.api_url + '/users';  // URL to web api
   private usersUlr2 = 'https://jsonplaceholder.typicode.com/users';
 
 
   private customHeaders = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
-    .set('authtoken', 'aac07efceba3ad532faa280a9e3eb3be')
+    .set('authtoken', this.api_token)
     .set('lang', 'es')
     .set('country', 'es');
 

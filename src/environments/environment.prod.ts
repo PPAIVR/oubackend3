@@ -18,7 +18,7 @@ export const environment = {
     typescript: packageJson.devDependencies['typescript']
   },
   appConfig: {
-    API_URL : 'http://apiouyuan.iaproject.net/api/v1/',
+    API_URL : 'http://apiouyuan.iaproject.net/apibackend/v1/',
     WEB_URL : 'http://apiouyuan.iaproject.net/'
   }
 };

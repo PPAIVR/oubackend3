@@ -17,8 +17,8 @@ export const environment = {
     angularCli: packageJson.devDependencies['@angular/cli'],
     typescript: packageJson.devDependencies['typescript']
   },
-  appConfig:{
-    API_URL : 'http://apiouyuan.iaproject.net/api/v1',
+  appConfig: {
+    API_URL : 'http://apiouyuan.iaproject.net/apibackend/v1',
     WEB_URL : 'http://apiouyuan.iaproject.net'
   }
 };
