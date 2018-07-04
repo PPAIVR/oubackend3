@@ -20,6 +20,9 @@ import { MetricsComponent } from './components/metrics/metrics.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ServicesComponent } from './components/services/services.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { EmployeesTableComponent } from './components/employees/employees-table/employees-table.component';
+import { EmployeesTablePaginatedComponent } from './components/employees/employees-table-paginated/employees-table-paginated.component';
+import { EmployeeDetailComponent } from './components/employees/employee-detail/employee-detail.component';
 
 import {httpInterceptorProviders} from './http-interceptors/index';
 
@@ -28,8 +31,8 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { AppadminComponent } from './components/appadmin/appadmin.component';
 import { ConversationComponent } from './components/chat/conversation/conversation.component';
 import { KeysPipe } from './components/chat/pipes/keys.pipe';
-import { EmployeesTableComponent } from './components/employees/employees-table/employees-table.component';
-import { EmployeesTablePaginatedComponent } from './components/employees/employees-table-paginated/employees-table-paginated.component';
+import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
+
 
 
 
@@ -50,13 +53,19 @@ import { EmployeesTablePaginatedComponent } from './components/employees/employe
     // app
     AppRoutingModule,
 
+    // Material
     MatTableModule,
-    CdkTableModule
+    CdkTableModule,
+
+    // Reactive forms
+    ReactiveFormsModule
 
   ],
   declarations: [AppComponent, UsersComponent, UserTableComponent,
     UserSubscriptionsComponent, UserTableSortingComponent, EmployeesComponent,
-    PushComponent, MetricsComponent, ProductsComponent, ServicesComponent, ChatComponent, AppadminComponent, ConversationComponent, KeysPipe, EmployeesTableComponent, EmployeesTablePaginatedComponent
+    PushComponent, MetricsComponent, ProductsComponent, ServicesComponent, ChatComponent,
+    AppadminComponent, ConversationComponent, KeysPipe, EmployeesTableComponent,
+    EmployeesTablePaginatedComponent, EmployeeDetailComponent
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

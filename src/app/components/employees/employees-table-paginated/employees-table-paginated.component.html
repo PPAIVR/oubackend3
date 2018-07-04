@@ -1,38 +1,58 @@
-<div class="example-container mat-elevation-z8">
-  <div class="example-loading-shade"
+<div class="ou-employee-table-container mat-elevation-z8">
+  <div class="ou-loading-shade"
        *ngIf="isLoadingResults || isRateLimitReached">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-    <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+    <div class="ou-employee-rate-limit-reached" *ngIf="isRateLimitReached">
       Error reach
     </div>
   </div>
 
-  <div class="example-table-container">
+  <div class="ou-table-container">
 
-    <table mat-table [dataSource]="data" class="example-table"
-           matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
-      <!-- Number Column -->
+    <table mat-table [dataSource]="data" class="ou-employee-table"
+           matSort matSortActive="id" matSortDisableClear matSortDirection="asc">
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+          #Id
+        </th>
         <td mat-cell *matCellDef="let row">{{row.id}}</td>
       </ng-container>
 
-      <!-- Title Column -->
+
       <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef>Username</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Usuario</th>
         <td mat-cell *matCellDef="let row">{{row.username}}</td>
       </ng-container>
 
-      <!-- State Column -->
+
       <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Email</th>
         <td mat-cell *matCellDef="let row">{{row.email}}</td>
       </ng-container>
 
-      <!-- Created Column -->
+
       <ng-container matColumnDef="level">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Level</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Nivel</th>
         <td mat-cell *matCellDef="let row">{{row.employee_level}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="created_at">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Fecha Creación</th>
+        <td mat-cell *matCellDef="let row">{{row.created_at|date}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="buttons">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let row">
+          <a routerLink="/employee/{{row.id}}">
+            <button mat-icon-button color="primary" matTooltip="Modificar Administrador" matTooltipClass="ou-tooltip-blue">
+              <mat-icon aria-label="Editar administrador">edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" matTooltip="Eliminar un administrador!" matTooltipClass="ou-tooltip-red">
+              <mat-icon aria-label="Eliminar administrador">delete</mat-icon>
+            </button>
+          </a>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -40,5 +60,5 @@
     </table>
   </div>
 
-  <mat-paginator [length]="resultsLength" [pageSize]="1"></mat-paginator>
+  <mat-paginator [length]="resultsLength" [pageSize]="2"></mat-paginator>
 </div>

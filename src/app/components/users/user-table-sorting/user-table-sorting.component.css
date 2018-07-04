@@ -1,9 +1,9 @@
 /* Structure */
-.example-container {
+.ou-employee-table-container {
   position: relative;
 }
 
-.example-table-container {
+.ou-table-container {
   position: relative;
   max-height: 400px;
   overflow: auto;
@@ -13,7 +13,7 @@ table {
   width: 100%;
 }
 
-.example-loading-shade {
+.ou-loading-shade {
   position: absolute;
   top: 0;
   left: 0;
@@ -26,7 +26,7 @@ table {
   justify-content: center;
 }
 
-.example-rate-limit-reached {
+.ou-employee-rate-limit-reached {
   color: #980000;
   max-width: 360px;
   text-align: center;

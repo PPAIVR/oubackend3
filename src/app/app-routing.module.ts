@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SettingsComponent } from './settings';
 import { UsersComponent } from './components/users/users.component';
-import {EmployeesComponent} from "@app/components/employees/employees.component";
-import {ChatComponent} from "@app/components/chat/chat.component";
-import {MetricsComponent} from "@app/components/metrics/metrics.component";
-import {ProductsComponent} from "@app/components/products/products.component";
-import {ServicesComponent} from "@app/components/services/services.component";
-import {PushComponent} from "@app/components/push/push.component";
+import {EmployeesComponent} from '@app/components/employees/employees.component';
+import {ChatComponent} from '@app/components/chat/chat.component';
+import {MetricsComponent} from '@app/components/metrics/metrics.component';
+import {ProductsComponent} from '@app/components/products/products.component';
+import {ServicesComponent} from '@app/components/services/services.component';
+import {PushComponent} from '@app/components/push/push.component';
+import {EmployeeDetailComponent} from "@app/components/employees/employee-detail/employee-detail.component";
 
 const routes: Routes = [
   {
@@ -35,6 +36,13 @@ const routes: Routes = [
     component: EmployeesComponent,
     data: {
       title: 'Administradores'
+    }
+  },
+  {
+    path: 'employee/:id',
+    component: EmployeeDetailComponent,
+    data: {
+      title: 'Editar Administrador'
     }
   },
   {

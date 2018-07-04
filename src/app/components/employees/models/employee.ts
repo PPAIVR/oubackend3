@@ -7,7 +7,7 @@ export interface  Employee {
   email: string;
   employee_level: number;
   authtoken: string;
-  total: number;
+  created_at: string;
 }
 
 export interface EmployeeResponse {
