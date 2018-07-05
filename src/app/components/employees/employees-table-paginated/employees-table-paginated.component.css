@@ -1,3 +1,9 @@
 table {
   width:100%;
 }
+
+.ou-filter-employee {
+  margin-top:20px;
+  margin-left:10px;
+  width:30%;
+}

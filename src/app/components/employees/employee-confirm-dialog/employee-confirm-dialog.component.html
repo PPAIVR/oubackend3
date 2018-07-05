@@ -1,0 +1,13 @@
+
+<mat-list>
+  <mat-list-item><strong>{{data.title}}</strong></mat-list-item>
+  <mat-list-item>{{data.question}}</mat-list-item>
+</mat-list>
+
+<p>&nbsp;</p>
+
+<p>
+  <button mat-raised-button (click)="doDelete()" color="warn">Si</button>
+  &nbsp;
+  <button mat-raised-button (click)="doExit()" color="primary">Salir</button>
+</p>

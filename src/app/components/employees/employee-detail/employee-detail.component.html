@@ -1,66 +1,67 @@
-<div class="ou-center-card">
-  <mat-card>
 
+
+
+<div class="ou-center-card" *ngIf="employee">
+  <mat-card>
     <mat-card-title>Editar administrador</mat-card-title>
     <mat-card-content>
+      <mat-form-field class="ou-employye-full-width">
+        <input matInput placeholder="UserId (bloqueado)" [(ngModel)]="employee.id">
+      </mat-form-field>
+      <table class="ou-employye-full-width" cellspacing="0"><tr>
+        <td>
+          <mat-form-field class="ou-employye-full-width">
+            <input matInput placeholder="Username" [(ngModel)]="employee.username" id="username">
+          </mat-form-field>
+        </td>
+        <td><mat-form-field class="ou-employye-full-width">
+          <input matInput placeholder="Email" [(ngModel)]="employee.email" id="email">
+        </mat-form-field></td>
+      </tr>
+      </table>
+      <table class="ou-employye-full-width" cellspacing="0"><tr>
+        <td>
+          <mat-form-field class="ou-employye-50-width">
+            <mat-select placeholder="Nivel del usuario" [(ngModel)]="employee.employee_level">
+              <mat-option *ngFor="let level of levels" [value]="level.value">
+                {{level.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
 
-      <form class="ou-employee-detail-form" #EmployeesForm="ngForm" [formGroup]="EditEmployeeForm" (ngSubmit)="onSubmit()">
-        <mat-form-field class="ou-employye-full-width">
-          <input matInput placeholder="UserId (bloqueado)" disabled value="{{employee.id ||'Loading...'}}">
-        </mat-form-field>
+        <!--  <mat-form-field class="ou-employye-full-width">
+            <input matInput placeholder="Usuario padre:" [(ngModel)]="employee.parent_id" id="parent_id">
+          </mat-form-field>-->
+        </td>
+      </tr>
+      </table>
+      <table class="ou-employye-full-width" cellspacing="0"><tr>
+        <td>
+          <mat-form-field class="ou-employye-full-width">
+            <input type="password" matInput placeholder="Clave del usuario" [(ngModel)]="employee.password" id="password">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="ou-employye-full-width">
+            <input type="password" matInput placeholder="Confirmar clave:" [(ngModel)]="aux.password_confirm" id="password_confirm">
+          </mat-form-field>
+        </td>
+      </tr>
+      </table>
+      <table class="ou-employye-full-width" cellspacing="0"><tr>
+        <td>
 
-        <table class="ou-employye-full-width" cellspacing="0"><tr>
-          <td>
-            <mat-form-field class="ou-employye-full-width">
-              <input matInput placeholder="Username" [(ngModel)]="employee.username" formControlName="username" id="username">
-            </mat-form-field>
-          </td>
-          <td><mat-form-field class="ou-employye-full-width">
-            <input matInput placeholder="Email" [(ngModel)]="employee.email" formControlName="email" id="email">
-          </mat-form-field></td>
-        </tr>
-        </table>
-        <table class="ou-employye-full-width" cellspacing="0"><tr>
-          <td>
-            <mat-form-field class="ou-employye-full-width">
-              <input matInput placeholder="Nivel de usuario" [(ngModel)]="employee.employee_level" formControlName="employee_level" id="employee_level">
-            </mat-form-field>
-          </td>
-          <td><mat-form-field class="ou-employye-full-width">
-            <input matInput placeholder="Usuario padre:" [(ngModel)]="employee.parent_id" formControlName="parent_id" id="parent_id">
-          </mat-form-field></td>
-        </tr>
-        </table>
-        <table class="ou-employye-full-width" cellspacing="0"><tr>
-          <td>
-            <mat-form-field class="ou-employye-full-width">
-              <input type="password" matInput placeholder="Clave del usuario" [(ngModel)]="employee.password" formControlName="password" id="password">
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field class="ou-employye-full-width">
-              <input type="password" matInput placeholder="Confirmar clave:" [(ngModel)]="aux.password_confirm" formControlName="password_confirm" id="password_confirm">
-            </mat-form-field>
-          </td>
-        </tr>
-        </table>
-        <table class="ou-employye-full-width" cellspacing="0"><tr>
-          <td>
+          <button mat-raised-button (click)="doSave()" color="primary">Salvar</button>
+          &nbsp;
+          <button mat-raised-button (click)="doDelete()" color="warn">Eliminar</button>
+          &nbsp;
+          <button mat-stroked-button (click)="goBack()" color="accent">Cancelar</button>
 
-            <button mat-raised-button (click)="doSave()" color="primary">Salvar</button>
-            &nbsp;
-            <button mat-raised-button (click)="doDelete()" color="warn">Eliminar</button>
-            &nbsp;
-            <button mat-stroked-button (click)="goBack()" color="accent">Cancelar</button>
-
-          </td>
-        </tr>
-        </table>
-      </form>
-
-
+        </td>
+      </tr>
+      </table>
     </mat-card-content>
-
   </mat-card>
 </div>
-

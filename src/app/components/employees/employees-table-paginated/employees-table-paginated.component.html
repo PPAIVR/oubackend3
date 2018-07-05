@@ -9,8 +9,13 @@
 
   <div class="ou-table-container">
 
+    <mat-form-field class="ou-filter-employee">
+      <input matInput placeholder="Buscador"  [(ngModel)]="search" #searchinput>&nbsp;&nbsp;
+    </mat-form-field>
+
     <table mat-table [dataSource]="data" class="ou-employee-table"
            matSort matSortActive="id" matSortDisableClear matSortDirection="asc">
+
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
           #Id
@@ -48,10 +53,10 @@
             <button mat-icon-button color="primary" matTooltip="Modificar Administrador" matTooltipClass="ou-tooltip-blue">
               <mat-icon aria-label="Editar administrador">edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" matTooltip="Eliminar un administrador!" matTooltipClass="ou-tooltip-red">
-              <mat-icon aria-label="Eliminar administrador">delete</mat-icon>
-            </button>
           </a>
+          <button mat-icon-button (click)="doDelete(row.id)" color="warn" matTooltip="Eliminar un administrador!" matTooltipClass="ou-tooltip-red">
+            <mat-icon aria-label="Eliminar administrador">delete</mat-icon>
+          </button>
         </td>
       </ng-container>
 

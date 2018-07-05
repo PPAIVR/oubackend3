@@ -31,7 +31,8 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { AppadminComponent } from './components/appadmin/appadmin.component';
 import { ConversationComponent } from './components/chat/conversation/conversation.component';
 import { KeysPipe } from './components/chat/pipes/keys.pipe';
-import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
+import { ReactiveFormsModule } from '@angular/forms';
+import { EmployeeConfirmDialogComponent } from './components/employees/employee-confirm-dialog/employee-confirm-dialog.component';
 
 
 
@@ -65,8 +66,9 @@ import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
     UserSubscriptionsComponent, UserTableSortingComponent, EmployeesComponent,
     PushComponent, MetricsComponent, ProductsComponent, ServicesComponent, ChatComponent,
     AppadminComponent, ConversationComponent, KeysPipe, EmployeesTableComponent,
-    EmployeesTablePaginatedComponent, EmployeeDetailComponent
+    EmployeesTablePaginatedComponent, EmployeeDetailComponent, EmployeeConfirmDialogComponent
   ],
+  entryComponents: [EmployeeConfirmDialogComponent],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
