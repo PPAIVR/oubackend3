@@ -48,7 +48,7 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   doSave() {
-    if(this.employee.password !== this.aux.password_confirm){
+    if ((this.emp.password !== this.employee.password) &&  (this.employee.password !== this.aux.password_confirm)){
       return this.snackBar.open('Tus claves no coinciden', 'cerrar', { duration: 2000});
     }
     this.employeeService.updateEmployee(this.employee)

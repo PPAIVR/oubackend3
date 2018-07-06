@@ -75,7 +75,7 @@ import {MatDialogModule, MatGridListModule, MatPaginatorModule, MatSortModule} f
     MatSortModule,
     ReactiveFormsModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
 
     BigInputComponent,
     BigInputActionComponent

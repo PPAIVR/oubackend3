@@ -58,10 +58,15 @@ export class EmployeeService {
       catchError(this.handleError<any>('updateEmployee'))
     );
   }
-  searchByField (criteria): Observable<Employee[]> {
-    return this.http.get<EmployeeResponse>(this.usersUrl, {headers: this.customHeaders}).map(res => res.data);
+  addEmployee (employee): Observable<any> {
+    return this.http.post(this.usersUrl , employee, { headers: this.customHeaders }).pipe(
+      tap(() => {
+        EmployeeService.log(`add employee id=${employee.id}`);
+        this.snackBar.open('Usuario agregado con éxito.', 'cerrar', { duration: 2000});
+      }),
+      catchError(this.handleError<any>('addEmployee'))
+    );
   }
-
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure

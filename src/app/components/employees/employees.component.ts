@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatTabGroup} from '@angular/material';
 
 @Component({
   selector: 'anms-employees',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeesComponent implements OnInit {
 
+  @ViewChild(MatTabGroup) mattab: MatTabGroup;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  // Event.
+  changeTab(event) {
+    this.mattab.selectedIndex = 0;
   }
 
 }

@@ -1,12 +1,13 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort} from '@angular/material';
+import {MatDialog, MatPaginator, MatSnackBar, MatSort} from '@angular/material';
 import {merge, Observable, of as observableOf} from 'rxjs';
 import {catchError, debounceTime, distinctUntilChanged, first, map, startWith, switchMap, tap} from 'rxjs/operators';
 import {environment} from '../../../../environments/environment';
 import { EmployeeService } from '../services/employee.service';
 import { Employee, EmployeeResponse } from '../models/employee';
 import {fromEvent} from 'rxjs/internal/observable/fromEvent';
+import {EmployeeConfirmDialogComponent} from "@app/components/employees/employee-confirm-dialog/employee-confirm-dialog.component";
 
 @Component({
   selector: 'anms-employees-table-paginated',
@@ -18,6 +19,7 @@ export class EmployeesTablePaginatedComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'username', 'email', 'created_at', 'buttons'];
   EmployeeHttpDao: EmployeeHttpDao | null;
   data: Employee[] = [];
+  result_dialog: any;
 
   resultsLength = 0;
   isLoadingResults = true;
@@ -27,7 +29,8 @@ export class EmployeesTablePaginatedComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('searchinput') input: ElementRef;
 
-  constructor(private http: HttpClient, private employeeService: EmployeeService) {}
+  constructor(private http: HttpClient, private employeeService: EmployeeService,
+              public snackBar: MatSnackBar, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.EmployeeHttpDao = new EmployeeHttpDao(this.http);
@@ -94,18 +97,36 @@ export class EmployeesTablePaginatedComponent implements OnInit, AfterViewInit {
   }
 
   doDelete(id) {
-    this.employeeService.deleteEmployee(id)
-      .pipe(first())
-      .subscribe(
-        data => {
-          // this.router.navigate(['list-user']);
-          console.log('Employee deleted:');
-          console.log(data);
-          this.paginator._changePageSize(this.paginator.pageSize);
-        },
-        error => {
-          alert(error);
-        });
+
+    this.openDialog('Eliminar Administrador', 'Estas seguro de que quieres eliminar al administrador?')
+      .afterClosed()
+      .subscribe(result => {
+        console.log('The dialog was closed');
+        console.log('result dialog');
+        console.log(result);
+        this.result_dialog = result;
+        if (result) {
+          this.employeeService.deleteEmployee(id)
+            .pipe(first())
+            .subscribe(
+              data => {
+                this.snackBar.open('Usuario eliminado con éxito', 'cerrar', { duration: 2000});
+              },
+              error => {
+                this.snackBar.open('Error al eliminar: ' + error.message, 'cerrar', { duration: 2000});
+              });
+        } else {
+          this.snackBar.open('Operación cancelada.', 'cerrar', { duration: 2000});
+        }
+      });
+  }
+
+  openDialog(title, question) {
+    const dialogRef = this.dialog.open(EmployeeConfirmDialogComponent, {
+      width: '400px',
+      data: {title: title, question: question}
+    });
+    return dialogRef;
   }
 
   executeSearch(criteria) {

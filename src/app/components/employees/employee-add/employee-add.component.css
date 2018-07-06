@@ -1,0 +1,22 @@
+.ou-center-card {
+  width:90%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+
+
+.ou-employee-detail-form {
+  min-width: 150px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.ou-employye-full-width {
+  width: 100%;
+}
+
+.ou-employye-50-width {
+  width: 50%;
+}
+

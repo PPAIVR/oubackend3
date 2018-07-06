@@ -33,6 +33,16 @@ import { ConversationComponent } from './components/chat/conversation/conversati
 import { KeysPipe } from './components/chat/pipes/keys.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeeConfirmDialogComponent } from './components/employees/employee-confirm-dialog/employee-confirm-dialog.component';
+import { EmployeeAddComponent } from './components/employees/employee-add/employee-add.component';
+import { UserAddComponent } from './components/users/user-add/user-add.component';
+import { UserDetailComponent } from './components/users/user-detail/user-detail.component';
+import { ProductAddComponent } from './components/products/product-add/product-add.component';
+import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
+import { ServiceDetailComponent } from './components/services/service-detail/service-detail.component';
+import { ServiceAddComponent } from './components/services/service-add/service-add.component';
+import { ServiceTableComponent } from './components/services/service-table/service-table.component';
+import { SimpleComponent } from './components/push/simple/simple.component';
+import { SegmentComponent } from './components/push/segment/segment.component';
 
 
 
@@ -66,7 +76,7 @@ import { EmployeeConfirmDialogComponent } from './components/employees/employee-
     UserSubscriptionsComponent, UserTableSortingComponent, EmployeesComponent,
     PushComponent, MetricsComponent, ProductsComponent, ServicesComponent, ChatComponent,
     AppadminComponent, ConversationComponent, KeysPipe, EmployeesTableComponent,
-    EmployeesTablePaginatedComponent, EmployeeDetailComponent, EmployeeConfirmDialogComponent
+    EmployeesTablePaginatedComponent, EmployeeDetailComponent, EmployeeConfirmDialogComponent, EmployeeAddComponent, UserAddComponent, UserDetailComponent, ProductAddComponent, ProductDetailComponent, ServiceDetailComponent, ServiceAddComponent, ServiceTableComponent, SimpleComponent, SegmentComponent
   ],
   entryComponents: [EmployeeConfirmDialogComponent],
   providers: [httpInterceptorProviders],
