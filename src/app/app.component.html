@@ -25,10 +25,25 @@
         [src]="logo" class="img-logo-ou"/> MQ1 Backend</span>
 
       <span class="d-none d-md-inline">
+
           <button mat-button class="nav-button" *ngFor="let item of navigation"
                   [routerLink]="[item.link]" routerLinkActive="active">
             {{item.label}}
           </button>
+        <!--<button mat-button class="nav-button" [routerLink]="employees" routerLinkActive="active">Usuarios</button>
+        <button mat-button class="nav-button" [routerLink]="customers" routerLinkActive="active">Clientes</button>-->
+        <!--<button mat-button [matMenuTriggerFor]="menu_usuarios" class="nav-button">Usuarios</button>
+        <mat-menu #menu_usuarios="matMenu">
+          <button mat-menu-item>Usuarios1</button>
+          <button mat-menu-item>Usuarios2</button>
+        </mat-menu>-->
+
+        <button mat-button [matMenuTriggerFor]="menu_admin" class="nav-button" routerLinkActive="active">Administración</button>
+        <mat-menu #menu_admin="matMenu">
+          <button mat-menu-item [routerLink]="['appadmin/faqs']">Preguntas frecuentes</button>
+          <button mat-menu-item [routerLink]="['appadmin/consejos']">Consejos</button>
+        </mat-menu>
+
         </span>
 
       <button mat-button class="sign-in-button "

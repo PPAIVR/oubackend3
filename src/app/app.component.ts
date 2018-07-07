@@ -43,7 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
   //logo = 'assets/ou-logo-new.png';
   logo = 'https://www.mequedouno.com/assets/images/web/logo-mequedouno.png';
   navigation = [
-    { link: 'appadmin', label: 'Administración' },
+    /*{ link: 'appadmin', label: 'Administración', subitems: [ { link: 'faqs', label: 'Faqs' } ] },*/
     { link: 'employees', label: 'Usuarios' },
     { link: 'customers', label: 'Clientes' },
     { link: 'products', label: 'Productos/Servicios' },

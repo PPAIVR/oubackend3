@@ -1,14 +1,21 @@
 .ou-chip {
   max-width:65px;
-  max-height:25px;
+  max-height:20px;
   text-align:center!important;
+  font-size: 0.7em;
 }
 
 .ou-chip-list {
   margin-top:15px;
+  margin-bottom:15px;
 }
 
 mat-header-cell {
   display:flex;
   justify-content:flex-end;
+}
+
+::ng-deep .mat-sort-header-container {
+  display:flex;
+  justify-content:center;
 }

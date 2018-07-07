@@ -2,7 +2,7 @@ table {
   width: 100%;
 }
 
-.circular--landscape {
+.circular-landscape {
   display: inline-block;
   position: relative;
   width: 50px;
@@ -11,8 +11,18 @@ table {
   border-radius: 50%;
 }
 
-.circular--landscape img {
+.circular-landscape img {
   width: auto;
   height: 100%;
   margin-left: -50px;
+}
+
+.ou-filter-employee {
+  margin-top:20px;
+  margin-left:10px;
+  width:30%;
+}
+
+.ou-cell-center {
+  text-align: center!important;
 }

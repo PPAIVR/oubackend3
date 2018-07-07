@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import {MyUser, MyResponse} from '../models/user';
-import { MessageService } from '../../../common/services/message.service';
+import {CustomerResponse, Customer} from '../models/user';
+import { MessageService } from '@app/common/services/message.service';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
-import { environment } from '../../../../environments/environment';
+import { environment } from '@env/environment';
+import {catchError, tap} from "rxjs/operators";
+import {MatSnackBar} from "@angular/material";
 
 @Injectable({
   providedIn: 'root',
@@ -16,11 +18,10 @@ import { environment } from '../../../../environments/environment';
 
 export class UserService {
 
-  constructor(private messageService: MessageService,  private http: HttpClient) { }
+  constructor(private messageService: MessageService,  private http: HttpClient, public snackBar: MatSnackBar) { }
   private api_url = `${environment.appConfig.API_URL}`;
   private api_token = `${environment.HARD_TOKEN}`;
   private usersUrl = this.api_url + '/users';  // URL to web api
-  private usersUlr2 = 'https://jsonplaceholder.typicode.com/users';
 
 
   private customHeaders = new HttpHeaders()
@@ -29,10 +30,39 @@ export class UserService {
     .set('lang', 'es')
     .set('country', 'es');
 
-  getUsers (): Observable<MyUser[]> {
-    return this.http.get<MyResponse>(this.usersUrl,{headers: this.customHeaders})
+  getCustomers (): Observable<Customer[]> {
+    return this.http.get<CustomerResponse>(this.usersUrl, {headers: this.customHeaders})
       .map(res => res.data);
   }
+
+  getCustomer (id): Observable<Customer> {
+    return this.http.get<CustomerResponse[]>(this.usersUrl + '/' + id, {headers: this.customHeaders}).map(res => res.data);
+  }
+
+  deleteCustomer (id): Observable<CustomerResponse> {
+    return this.http.delete<CustomerResponse>(this.usersUrl + '/' + id, {headers: this.customHeaders});
+  }
+
+  updateCustomer (customer): Observable<any> {
+    return this.http.put(this.usersUrl + '/' + customer.id, customer, { headers: this.customHeaders }).pipe(
+      tap(() => {
+        this.log(`updated customer id=${customer.id}`);
+        this.snackBar.open('Cliente actualizado con éxito.', 'cerrar', { duration: 2000});
+      }),
+      catchError(this.handleError<any>('updateCustomer'))
+    );
+  }
+  addCustomer (customer): Observable<any> {
+    return this.http.post(this.usersUrl , customer, { headers: this.customHeaders }).pipe(
+      tap(() => {
+        this.log(`add customer id=${customer.id}`);
+        this.snackBar.open('Cliente agregado con éxito.', 'cerrar', { duration: 2000});
+      }),
+      catchError(this.handleError<any>('addCustomer'))
+    );
+  }
+
+
 
   /** Log a UserService message with the MessageService */
   private log(message: string) {
@@ -47,33 +77,9 @@ export class UserService {
    */
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
-
-
-
-
-
-
-  // Deprecated
-  /*getUsers(): Observable<User[]> {
-    // TODO: send the message _after_ fetching the users
-    this.messageService.add('UserService: fetched users');
-    return of(USERS);
-  }*/
-
-  /*getUser(id: number): Observable<User> {
-    // TODO: send the message _after_ fetching the user
-    this.messageService.add(`UserService: fetched user id=${id}`);
-    return of(USERS.find(user => user.id === id));
-  }*/
 }

@@ -21,7 +21,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
-import {MatDialogModule, MatGridListModule, MatPaginatorModule, MatSortModule} from '@angular/material';
+import {MatBadgeModule, MatDialogModule, MatGridListModule, MatPaginatorModule, MatSortModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -48,7 +48,8 @@ import {MatDialogModule, MatGridListModule, MatPaginatorModule, MatSortModule} f
     MatSortModule,
     ReactiveFormsModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatBadgeModule
   ],
   declarations: [BigInputComponent, BigInputActionComponent],
   exports: [
@@ -76,6 +77,7 @@ import {MatDialogModule, MatGridListModule, MatPaginatorModule, MatSortModule} f
     ReactiveFormsModule,
     MatGridListModule,
     MatDialogModule,
+    MatBadgeModule,
 
     BigInputComponent,
     BigInputActionComponent

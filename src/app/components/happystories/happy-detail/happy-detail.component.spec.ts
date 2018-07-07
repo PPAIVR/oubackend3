@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserTableSortingComponent } from './user-table-sorting.component';
+import { HappyDetailComponent } from './happy-detail.component';
 
-describe('UserTableSortingComponent', () => {
-  let component: UserTableSortingComponent;
-  let fixture: ComponentFixture<UserTableSortingComponent>;
+describe('HappyDetailComponent', () => {
+  let component: HappyDetailComponent;
+  let fixture: ComponentFixture<HappyDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserTableSortingComponent ]
+      declarations: [ HappyDetailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserTableSortingComponent);
+    fixture = TestBed.createComponent(HappyDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

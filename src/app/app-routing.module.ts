@@ -10,6 +10,10 @@ import {ProductsComponent} from '@app/components/products/products.component';
 import {ServicesComponent} from '@app/components/services/services.component';
 import {PushComponent} from '@app/components/push/push.component';
 import {EmployeeDetailComponent} from "@app/components/employees/employee-detail/employee-detail.component";
+import {AppadminComponent} from "@app/components/appadmin/appadmin.component";
+import {AdvicesComponent} from "@app/components/advices/advices.component";
+import {FaqsAddComponent} from "@app/components/faqs/faqs-add/faqs-add.component";
+import {FaqsComponent} from "@app/components/faqs/faqs.component";
 
 const routes: Routes = [
   {
@@ -71,6 +75,27 @@ const routes: Routes = [
     component: PushComponent,
     data: {
       title: 'Notificaciones Push'
+    }
+  },
+  {
+    path: 'appadmin',
+    component: AppadminComponent,
+    data: {
+      title: 'Administración APP'
+    }
+  },
+  {
+    path: 'appadmin/faqs',
+    component: FaqsComponent,
+    data: {
+      title: 'Preguntas frecuentes'
+    }
+  },
+  {
+    path: 'appadmin/consejos',
+    component: AdvicesComponent,
+    data: {
+      title: 'Consejos'
     }
   },
   {

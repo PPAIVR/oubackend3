@@ -1,6 +1,7 @@
 <div class="ou-chip-list">
-<mat-chip-list class="mat-chip-list-stacked">
-  <mat-chip *ngFor="let sub of subs" color="primary" class="ou-chip" selected matTooltip="Expira: {{sub.date_end | date: 'dd-MM-y'}}">{{sub.type}}</mat-chip>
+<mat-chip-list class="mat-chip-list-stacked" *ngIf="subs">
+  <!--<mat-chip *ngFor="let sub of subs" color="primary" class="ou-chip" selected matTooltip="Expira: {{sub.date_end | date: 'dd-MM-y'}}">{{sub.type}}</mat-chip>-->
+  <mat-chip color="{{subs.color}}" class="ou-chip" selected="true">{{subs.type}}</mat-chip>
 </mat-chip-list>
 </div>
 
