@@ -1,10 +1,19 @@
 <mat-tab-group>
   <mat-tab label="Listado de productos">
-    <anms-user-table></anms-user-table>
+
+    <div *ngIf="products" class="ou-padding-5">
+      <anms-product-table [products]="products"></anms-product-table>
+    </div>
   </mat-tab>
-  <mat-tab label="Crear producto"> Alta de productos. </mat-tab>
+
+
   <mat-tab label="Listado de servicios">
-    <anms-user-table></anms-user-table>
+    <div *ngIf="services" class="ou-padding-5">
+      <anms-services-table [services]="services"></anms-services-table>
+    </div>
   </mat-tab>
-  <mat-tab label="Crear servicio"> Crear servicio. </mat-tab>
+
+  <mat-tab label="Crear producto">Formulario creacion productos.</mat-tab>
+
+  <mat-tab label="Crear servicio">Formulario creacion servicios</mat-tab>
 </mat-tab-group>

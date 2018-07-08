@@ -11,26 +11,25 @@
         #Id
       </th>
       <td mat-cell *matCellDef="let row" class="ou-cell-center">
-        {{row.id}}
+        <span matBadge="{{row.id}}" matBadgeOverlap="true" matBadgePosition="before">
+          <img *ngIf="row.images[0]" src="{{row.images[0].url}}" class="circular-landscape" onerror="this.src='https://www.cakedecoratingcentral.com.au/media/catalog/product/cache/1/small_image/578x/9df78eab33525d08d6e5fb8d27136e95/placeholder/default/Image_placeholder_1.png'" alt="No Image.">
+        </span>
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="question">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear style="text-align: center;">
-        Pregunta
-      </th>
-      <td mat-cell *matCellDef="let row" class="ou-cell-center">
-        {{row.question}}
-      </td>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center"> {{row.lang.name}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="response">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear style="text-align: center;">
-        Respuesta
-      </th>
-      <td mat-cell *matCellDef="let row" class="ou-cell-center">
-        {{row.response}}
-      </td>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Descripción </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center" style="width:50%;"> {{row.lang.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center"> {{row.points}} </td>
     </ng-container>
 
     <ng-container matColumnDef="buttons">

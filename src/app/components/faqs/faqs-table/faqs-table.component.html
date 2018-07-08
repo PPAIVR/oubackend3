@@ -1,3 +1,48 @@
-<p>
-  faqs-table works!
-</p>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear style="text-align: center;">
+        #Id
+      </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center">
+        {{row.id}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="question">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Pregunta </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center"> {{row.question}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="response">
+      <th mat-header-cell *matHeaderCellDef> Respouesta </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center"> {{row.response}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="buttons">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center">
+
+        <button mat-icon-button color="primary" matTooltip="Modificar faq" matTooltipClass="ou-tooltip-blue" >
+          <mat-icon aria-label="Editar faq">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" matTooltip="Eliminar Faq!" matTooltipClass="ou-tooltip-red">
+          <mat-icon aria-label="Eliminar Faq">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

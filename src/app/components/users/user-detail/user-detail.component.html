@@ -76,7 +76,8 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    Sin datos
+    <!--Suscripciones-->
+    <anms-user-subs-table *ngIf="customer" [subscriptions]="customer?.usersubscriptions"></anms-user-subs-table>
 
     <mat-action-row>
       <button mat-button color="warn" (click)="prevStep()">Anterior</button>
@@ -133,7 +134,15 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    SIN DATOS
+    <div *ngIf="customer" class="ou-video-center">
+      <div class="ou-video" *ngIf="customer.url_video">
+        <video width="320" height="240" controls>
+          <source src="{{customer.url_video}}" type="video/mp4">
+          Tu navegador no soporta la incrustación de video.
+        </video>
+      </div>
+      <div class="ou-video-none" *ngIf="!customer.url_video">El usuario no tiene video de perfil.</div>
+    </div>
 
     <mat-action-row>
       <button mat-button color="warn" (click)="prevStep()">Anterior</button>

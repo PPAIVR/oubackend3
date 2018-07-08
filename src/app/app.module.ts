@@ -62,7 +62,10 @@ import { ConversationComponent } from './components/chat/conversation/conversati
 import { KeysPipe } from './components/chat/pipes/keys.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserCarrouselComponent } from './components/users/user-carrousel/user-carrousel.component';
-
+import {SlideshowModule} from 'ng-simple-slideshow';
+import { UserSubsTableComponent } from './components/users/user-subs-table/user-subs-table.component';
+import { ProductTableComponent } from './components/products/product-table/product-table.component';
+import { ServicesTableComponent } from './components/products/services-table/services-table.component';
 
 @NgModule({
   imports: [
@@ -86,7 +89,10 @@ import { UserCarrouselComponent } from './components/users/user-carrousel/user-c
     CdkTableModule,
 
     // Reactive forms
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    //Carrousel
+    SlideshowModule
 
   ],
   declarations: [AppComponent, UsersComponent, UserTableComponent,
@@ -99,7 +105,7 @@ import { UserCarrouselComponent } from './components/users/user-carrousel/user-c
     SimpleComponent, SegmentComponent, FaqsComponent, FaqsTableComponent, FaqsDetailComponent, FaqsAddComponent,
     AdvicesComponent, AdviceEditComponent, AdviceDetailComponent, AdviceTableComponent, AdviceAddComponent, BannedwordsComponent,
     BannedTableComponent, BannedEditComponent, BannedAddComponent, HappystoriesComponent, HappyAddComponent,
-    HappyTableComponent, HappyDetailComponent, UserCarrouselComponent
+    HappyTableComponent, HappyDetailComponent, UserCarrouselComponent, UserSubsTableComponent, ProductTableComponent, ServicesTableComponent
   ],
   entryComponents: [EmployeeConfirmDialogComponent],
   providers: [httpInterceptorProviders],

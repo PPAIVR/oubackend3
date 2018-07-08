@@ -1,17 +1,17 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
-import {Faq} from "@app/components/faqs/models/faqs";
+import {Product} from "@app/components/products/models/product";
 
 @Component({
-  selector: 'anms-faqs-table',
-  templateUrl: './faqs-table.component.html',
-  styleUrls: ['./faqs-table.component.css']
+  selector: 'anms-product-table',
+  templateUrl: './product-table.component.html',
+  styleUrls: ['./product-table.component.css']
 })
-export class FaqsTableComponent implements OnInit {
-  @Input() faqs: Faq[];
+export class ProductTableComponent implements OnInit {
+  @Input() products: Product[];
 
-  displayedColumns: string[] = ['id', 'question','response', 'buttons'];
-  dataSource: MatTableDataSource<Faq>;
+  displayedColumns: string[] = ['id', 'name','description', 'price', 'buttons'];
+  dataSource: MatTableDataSource<Product>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -20,7 +20,7 @@ export class FaqsTableComponent implements OnInit {
 
   ngOnInit() {
 
-    this.dataSource = new MatTableDataSource(this.faqs);
+    this.dataSource = new MatTableDataSource(this.products);
 
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

@@ -1,4 +1,5 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {SlideshowComponent} from "ng-simple-slideshow/src/app/modules/slideshow/slideshow.component";
 
 
 @Component({
@@ -10,7 +11,11 @@ import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 export class UserCarrouselComponent implements OnInit {
   @Input() pictures;
   imageSources: any = [];
+  //private slideshow: SlideshowComponent;
   @ViewChild('slideshow') slideshow: ElementRef;
+  /*@ViewChild('slideshow') set controlElRef(elementRef: ElementRef) {
+    this.slideshow = elementRef as SlideshowComponent;
+  }*/
 
 
   constructor() { }
@@ -21,8 +26,8 @@ export class UserCarrouselComponent implements OnInit {
 
 
   goToPicture(index) {
+
     this.slideshow.goToSlide(index);
+
   }
-
-
 }

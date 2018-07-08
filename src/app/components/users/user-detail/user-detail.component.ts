@@ -39,7 +39,7 @@ export class UserDetailComponent implements OnInit {
   }
 
 
-  step = 0;
+  step = -1;
 
   setStep(index: number) {
     this.step = index;

@@ -1,0 +1,54 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> #ID </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center"> {{row.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center"> {{row.type}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type_id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id Sub. </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center"> {{row.type_id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="start">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Inicio </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center"> {{row.start|date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="end">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fin </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center"> {{row.end|date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="buttons">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center">
+
+        <button mat-icon-button color="primary" matTooltip="Modificar suscripción" matTooltipClass="ou-tooltip-blue" >
+          <mat-icon aria-label="Editar suscripcion">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" matTooltip="Bloquear suscripción!" matTooltipClass="ou-tooltip-red">
+          <mat-icon aria-label="Bloquear suscripción">block</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

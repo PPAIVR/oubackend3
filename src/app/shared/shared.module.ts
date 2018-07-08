@@ -30,8 +30,6 @@ import {
   MatSortModule
 } from '@angular/material';
 
-import {SlideshowModule} from 'ng-simple-slideshow';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -59,8 +57,7 @@ import {SlideshowModule} from 'ng-simple-slideshow';
     MatGridListModule,
     MatDialogModule,
     MatBadgeModule,
-    MatExpansionModule,
-    SlideshowModule
+    MatExpansionModule
   ],
   declarations: [BigInputComponent, BigInputActionComponent],
   exports: [
@@ -91,8 +88,7 @@ import {SlideshowModule} from 'ng-simple-slideshow';
     MatBadgeModule,
     MatExpansionModule,
     BigInputComponent,
-    BigInputActionComponent,
-    SlideshowModule
+    BigInputActionComponent
   ]
 })
 export class SharedModule {}
