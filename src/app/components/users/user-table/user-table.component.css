@@ -9,6 +9,8 @@ table {
   height: 50px;
   overflow: hidden;
   border-radius: 50%;
+  margin-top:5px;
+  margin-bottom:5px;
 }
 
 .circular-landscape img {

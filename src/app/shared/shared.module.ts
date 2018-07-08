@@ -21,7 +21,16 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
-import {MatBadgeModule, MatDialogModule, MatGridListModule, MatPaginatorModule, MatSortModule} from '@angular/material';
+import {
+  MatBadgeModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatPaginatorModule,
+  MatSortModule
+} from '@angular/material';
+
+import {SlideshowModule} from 'ng-simple-slideshow';
 
 @NgModule({
   imports: [
@@ -49,7 +58,9 @@ import {MatBadgeModule, MatDialogModule, MatGridListModule, MatPaginatorModule, 
     ReactiveFormsModule,
     MatGridListModule,
     MatDialogModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatExpansionModule,
+    SlideshowModule
   ],
   declarations: [BigInputComponent, BigInputActionComponent],
   exports: [
@@ -78,9 +89,10 @@ import {MatBadgeModule, MatDialogModule, MatGridListModule, MatPaginatorModule, 
     MatGridListModule,
     MatDialogModule,
     MatBadgeModule,
-
+    MatExpansionModule,
     BigInputComponent,
-    BigInputActionComponent
+    BigInputActionComponent,
+    SlideshowModule
   ]
 })
 export class SharedModule {}

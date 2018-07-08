@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Observable } from 'rxjs';
 import {CustomerResponse, Customer} from '../models/user';
@@ -20,7 +20,6 @@ import {fromEvent} from 'rxjs/internal/observable/fromEvent';
 })
 export class UserTableComponent implements OnInit {
   @Input() search;
-  //displayedColumns: string[] = ['id', 'username', 'subscriptions', 'picture', 'buttons'];
   displayedColumns: string[] = ['id', 'username','email', 'subscriptions','city', 'online', 'created_at','buttons'];
   CustomerHttpDao: CustomerHttpDao | null;
   data: Customer[] = [];
@@ -33,6 +32,13 @@ export class UserTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('searchinput') input: ElementRef;
+
+  @Output()
+  setActiveUser = new EventEmitter<Customer>();
+
+  setUserForEdit(customer) {
+    this.setActiveUser.emit(customer);
+  }
 
   constructor(private http: HttpClient, private userService: UserService,
               public snackBar: MatSnackBar, public dialog: MatDialog) { }
@@ -126,6 +132,58 @@ export class UserTableComponent implements OnInit {
         }
       });
   }
+
+  doBlock(id) {
+
+    this.openDialog('Bloquear cliente', 'Estas seguro de que quieres bloquear al cliente?')
+      .afterClosed()
+      .subscribe(result => {
+        console.log('The dialog was closed');
+        console.log('result dialog');
+        console.log(result);
+        this.result_dialog = result;
+        if (result) {
+          this.userService.blockCustomer(id)
+            .pipe(first())
+            .subscribe(
+              data => {
+                this.snackBar.open('Cliente bloqueado con éxito', 'cerrar', { duration: 2000});
+              },
+              error => {
+                this.snackBar.open('Error al bloquear: ' + error.message, 'cerrar', { duration: 2000});
+              });
+        } else {
+          this.snackBar.open('Operación cancelada.', 'cerrar', { duration: 2000});
+        }
+      });
+  }
+
+  doUnblock(id) {
+
+    this.openDialog('Eliminar cliente', 'Estas seguro de que quieres eliminar al cliente?')
+      .afterClosed()
+      .subscribe(result => {
+        console.log('The dialog was closed');
+        console.log('result dialog');
+        console.log(result);
+        this.result_dialog = result;
+        if (result) {
+          this.userService.deleteCustomer(id)
+            .pipe(first())
+            .subscribe(
+              data => {
+                this.snackBar.open('Cliente eliminado con éxito', 'cerrar', { duration: 2000});
+              },
+              error => {
+                this.snackBar.open('Error al eliminar: ' + error.message, 'cerrar', { duration: 2000});
+              });
+        } else {
+          this.snackBar.open('Operación cancelada.', 'cerrar', { duration: 2000});
+        }
+      });
+  }
+
+
 
   executeSearch(criteria) {
     merge(this.sort.sortChange, this.paginator.page)

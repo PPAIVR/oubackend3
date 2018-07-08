@@ -29,7 +29,6 @@ export class UserSubscriptionsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.usersubscriptions);
     if(this.usersubscriptions.is_vip == true){
       this.subs.type = 'VIP';
       this.subs.color = 'warn';

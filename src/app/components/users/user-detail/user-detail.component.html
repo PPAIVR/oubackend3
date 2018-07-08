@@ -1,3 +1,144 @@
-<p>
-  user-detail works!
-</p>
+<mat-accordion class="ou-headers-align">
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <strong>Información general</strong>
+      </mat-panel-title>
+      <mat-panel-description>
+        Datos de registro y personales
+        <mat-icon>account_circle</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+
+    <div class="ou-center-card" *ngIf="customer">
+      <mat-card>
+        <!--<mat-card-title>Editar datos del cliente</mat-card-title>-->
+        <mat-card-content>
+          <mat-form-field class="ou-customer-full-width">
+            <input matInput placeholder="UserId (bloqueado)" [(ngModel)]="customer.id" disabled>
+          </mat-form-field>
+          <table class="ou-customer-full-width" cellspacing="0"><tr>
+            <td>
+              <mat-form-field class="ou-customer-full-width">
+                <input matInput placeholder="Username" [(ngModel)]="customer.username" id="username">
+              </mat-form-field>
+            </td>
+            <td><mat-form-field class="ou-customer-full-width">
+              <input matInput placeholder="Email" [(ngModel)]="customer.email" id="email">
+            </mat-form-field></td>
+          </tr>
+          </table>
+          <table class="ou-customer-full-width" cellspacing="0"><tr>
+            <td>
+              <mat-form-field class="ou-customer-full-width">
+                <input type="password" matInput placeholder="Clave del usuario" [(ngModel)]="customer.password" id="password">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="ou-customer-full-width">
+                <input type="password" matInput placeholder="Confirmar clave:" [(ngModel)]="aux.password_confirm" id="password_confirm">
+              </mat-form-field>
+            </td>
+          </tr>
+          </table>
+          <table class="ou-customer-full-width" cellspacing="0"><tr>
+            <td>
+
+              <button mat-raised-button (click)="doSave()" color="primary">Salvar</button>
+              &nbsp;
+              <button mat-raised-button (click)="doDelete()" color="warn">Eliminar</button>
+              &nbsp;
+              <button mat-stroked-button (click)="goBack()" color="accent">Cancelar</button>
+
+            </td>
+          </tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <strong>Datos de subscripción</strong>
+      </mat-panel-title>
+      <mat-panel-description>
+        Información sobre las suscripciones activas de un cliente
+        <mat-icon>payment</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    Sin datos
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+      <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <strong>Datos Member get Member</strong>
+      </mat-panel-title>
+      <mat-panel-description>
+        Estadísticas sobre el programa de apadrinamiento
+        <mat-icon>sentiment_very_satisfied</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    SIN DATOS
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+      <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <strong>Fotos</strong>
+      </mat-panel-title>
+      <mat-panel-description>
+        Imágenes de este usuario
+        <mat-icon>insert_photo</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <anms-user-carrousel *ngIf="customer" [pictures]="customer?.pictures"></anms-user-carrousel>
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+      <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <strong>Video</strong>
+      </mat-panel-title>
+      <mat-panel-description>
+        Video personal del usuario
+        <mat-icon>videocamm</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    SIN DATOS
+
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+      <button mat-button color="primary" (click)="nextStep()">Fin</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+</mat-accordion>

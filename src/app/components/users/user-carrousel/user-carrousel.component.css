@@ -1,0 +1,11 @@
+.ou-width-center {
+  width:60%;
+  margin: 0 auto;
+}
+
+.ou-max {
+  max-width: 60px;
+  border: 1px solid gray;
+  margin-right:2px;
+  border-radius:5px;
+}

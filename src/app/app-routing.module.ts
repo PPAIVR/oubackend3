@@ -14,11 +14,12 @@ import {AppadminComponent} from "@app/components/appadmin/appadmin.component";
 import {AdvicesComponent} from "@app/components/advices/advices.component";
 import {FaqsAddComponent} from "@app/components/faqs/faqs-add/faqs-add.component";
 import {FaqsComponent} from "@app/components/faqs/faqs.component";
+import {UserDetailComponent} from "@app/components/users/user-detail/user-detail.component";
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'about',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -26,6 +27,13 @@ const routes: Routes = [
     component: UsersComponent,
     data: {
       title: 'Clientes'
+    }
+  },
+  {
+    path: 'customers/:id',
+    component: UserDetailComponent,
+    data: {
+      title: 'Detalle Cliente'
     }
   },
   {
@@ -104,7 +112,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'about'
+    redirectTo: 'login'
   }
 ];
 

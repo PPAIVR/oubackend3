@@ -10,6 +10,8 @@ import { StaticModule } from './static';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+
 import { UsersComponent } from './components/users/users.component';
 import { UserTableComponent } from './components/users/user-table/user-table.component';
 import { UserSubscriptionsComponent } from './components/users/user-subscriptions/user-subscriptions.component';
@@ -19,7 +21,6 @@ import { MetricsComponent } from './components/metrics/metrics.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ServicesComponent } from './components/services/services.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { EmployeesTableComponent } from './components/employees/employees-table/employees-table.component';
 import { EmployeesTablePaginatedComponent } from './components/employees/employees-table-paginated/employees-table-paginated.component';
 import { EmployeeDetailComponent } from './components/employees/employee-detail/employee-detail.component';
 import { EmployeeConfirmDialogComponent } from './components/employees/employee-confirm-dialog/employee-confirm-dialog.component';
@@ -33,15 +34,6 @@ import { ServiceAddComponent } from './components/services/service-add/service-a
 import { ServiceTableComponent } from './components/services/service-table/service-table.component';
 import { SimpleComponent } from './components/push/simple/simple.component';
 import { SegmentComponent } from './components/push/segment/segment.component';
-
-import {httpInterceptorProviders} from './http-interceptors/index';
-
-import {MatTableModule} from '@angular/material';
-import {CdkTableModule} from '@angular/cdk/table';
-import { AppadminComponent } from './components/appadmin/appadmin.component';
-import { ConversationComponent } from './components/chat/conversation/conversation.component';
-import { KeysPipe } from './components/chat/pipes/keys.pipe';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FaqsComponent } from './components/faqs/faqs.component';
 import { FaqsTableComponent } from './components/faqs/faqs-table/faqs-table.component';
 import { FaqsDetailComponent } from './components/faqs/faqs-detail/faqs-detail.component';
@@ -61,8 +53,15 @@ import { HappyTableComponent } from './components/happystories/happy-table/happy
 import { HappyDetailComponent } from './components/happystories/happy-detail/happy-detail.component';
 
 
+import {httpInterceptorProviders} from './http-interceptors/index';
 
-
+import {MatTableModule} from '@angular/material';
+import {CdkTableModule} from '@angular/cdk/table';
+import { AppadminComponent } from './components/appadmin/appadmin.component';
+import { ConversationComponent } from './components/chat/conversation/conversation.component';
+import { KeysPipe } from './components/chat/pipes/keys.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserCarrouselComponent } from './components/users/user-carrousel/user-carrousel.component';
 
 
 @NgModule({
@@ -93,11 +92,14 @@ import { HappyDetailComponent } from './components/happystories/happy-detail/hap
   declarations: [AppComponent, UsersComponent, UserTableComponent,
     UserSubscriptionsComponent, EmployeesComponent,
     PushComponent, MetricsComponent, ProductsComponent, ServicesComponent, ChatComponent,
-    AppadminComponent, ConversationComponent, KeysPipe, EmployeesTableComponent,
+    AppadminComponent, ConversationComponent, KeysPipe,
     EmployeesTablePaginatedComponent, EmployeeDetailComponent, EmployeeConfirmDialogComponent,
     EmployeeAddComponent, UserAddComponent, UserDetailComponent, ProductAddComponent,
     ProductDetailComponent, ServiceDetailComponent, ServiceAddComponent, ServiceTableComponent,
-    SimpleComponent, SegmentComponent, FaqsComponent, FaqsTableComponent, FaqsDetailComponent, FaqsAddComponent, AdvicesComponent, AdviceEditComponent, AdviceDetailComponent, AdviceTableComponent, AdviceAddComponent, BannedwordsComponent, BannedTableComponent, BannedEditComponent, BannedAddComponent, HappystoriesComponent, HappyAddComponent, HappyTableComponent, HappyDetailComponent
+    SimpleComponent, SegmentComponent, FaqsComponent, FaqsTableComponent, FaqsDetailComponent, FaqsAddComponent,
+    AdvicesComponent, AdviceEditComponent, AdviceDetailComponent, AdviceTableComponent, AdviceAddComponent, BannedwordsComponent,
+    BannedTableComponent, BannedEditComponent, BannedAddComponent, HappystoriesComponent, HappyAddComponent,
+    HappyTableComponent, HappyDetailComponent, UserCarrouselComponent
   ],
   entryComponents: [EmployeeConfirmDialogComponent],
   providers: [httpInterceptorProviders],

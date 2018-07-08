@@ -42,7 +42,7 @@ export class EmployeeService {
   }
 
   getEmployee (id): Observable<Employee> {
-    return this.http.get<EmployeeResponse[]>(this.usersUrl + '/' + id, {headers: this.customHeaders}).map(res => res.data);
+    return this.http.get<any>(this.usersUrl + '/' + id, {headers: this.customHeaders}).map(res => res.data);
   }
 
   deleteEmployee (id): Observable<EmployeeResponse> {

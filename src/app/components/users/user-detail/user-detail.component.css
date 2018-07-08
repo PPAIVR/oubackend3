@@ -1,0 +1,40 @@
+.ou-center-card {
+  width:95%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+
+
+.ou-customer-detail-form {
+  min-width: 150px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.ou-customer-full-width {
+  width: 100%;
+}
+
+.ou-customer-50-width {
+  width: 50%;
+}
+
+.ou-panels-width {
+  width:95%;
+}
+
+
+.ou .mat-expansion-panel-header-title,
+.ou-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.ou-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-expansion-panel-header-title {
+  max-width:350px!important;
+}

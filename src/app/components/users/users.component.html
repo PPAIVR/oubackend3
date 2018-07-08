@@ -1,9 +1,11 @@
-<mat-tab-group>
+<mat-tab-group (selectedTabChange)="onLinkClick($event)">
   <mat-tab label="Listado de clientes">
-
-    <anms-user-table></anms-user-table>
-
+    <anms-user-table (setActiveUser)="activateUser($event)"></anms-user-table>
   </mat-tab>
+  <mat-tab label="Detalle de usuario" [disabled]='!activate_detail'>
+    <anms-user-detail  (clickBack)="changeTab()" [customer]="active_customer"></anms-user-detail>
+  </mat-tab>
+
   <mat-tab label="Validar Fotos"> Validación de fotos. </mat-tab>
   <mat-tab label="Historias Felices"> Historias con bonito final </mat-tab>
   <mat-tab label="Denuncias"> Denuncias de usuarios </mat-tab>

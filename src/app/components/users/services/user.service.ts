@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import {CustomerResponse, Customer} from '../models/user';
-import { MessageService } from '@app/common/services/message.service';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
@@ -18,10 +17,11 @@ import {MatSnackBar} from "@angular/material";
 
 export class UserService {
 
-  constructor(private messageService: MessageService,  private http: HttpClient, public snackBar: MatSnackBar) { }
+  constructor(private http: HttpClient, public snackBar: MatSnackBar) { }
   private api_url = `${environment.appConfig.API_URL}`;
   private api_token = `${environment.HARD_TOKEN}`;
   private usersUrl = this.api_url + '/users';  // URL to web api
+  private usersUrlBlock = this.api_url + '/users/block';  // URL to web api
 
 
   private customHeaders = new HttpHeaders()
@@ -36,7 +36,7 @@ export class UserService {
   }
 
   getCustomer (id): Observable<Customer> {
-    return this.http.get<CustomerResponse[]>(this.usersUrl + '/' + id, {headers: this.customHeaders}).map(res => res.data);
+    return this.http.get<any>(this.usersUrl + '/' + id, {headers: this.customHeaders}).map(res => res.data);
   }
 
   deleteCustomer (id): Observable<CustomerResponse> {
@@ -62,11 +62,21 @@ export class UserService {
     );
   }
 
+  blockCustomer (customer): Observable<any> {
+    return this.http.post(this.usersUrlBlock + '/' + customer.id, customer, { headers: this.customHeaders }).pipe(
+      tap(() => {
+        this.log(`updated customer id=${customer.id}`);
+        this.snackBar.open('Cliente bloqueado con éxito.', 'cerrar', { duration: 2000});
+      }),
+      catchError(this.handleError<any>('updateCustomer'))
+    );
+  }
+
 
 
   /** Log a UserService message with the MessageService */
   private log(message: string) {
-    this.messageService.add('UsersService: ' + message);
+    console.log('Message:'+message);
   }
 
   /**
