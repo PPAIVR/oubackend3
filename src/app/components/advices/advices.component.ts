@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Advice} from "@app/components/advices/models/advices";
-import {AdviceService} from "@app/components/advices/services/advice.service";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Advice} from '@app/components/advices/models/advices';
+import {AdviceService} from '@app/components/advices/services/advice.service';
 
 @Component({
   selector: 'anms-advices',
@@ -12,11 +12,10 @@ export class AdvicesComponent implements OnInit {
   constructor(private adviceService: AdviceService) { }
 
   ngOnInit() {
-    this.adviceService.getAdvices().subscribe(data => {
-      console.log('¡data');
-      console.log(data);
+    this.adviceService.getItems().subscribe(data => {
       this.advices = data.data;
     });
   }
+
 
 }

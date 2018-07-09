@@ -20,7 +20,7 @@ import {fromEvent} from 'rxjs/internal/observable/fromEvent';
 })
 export class UserTableComponent implements OnInit {
   @Input() search;
-  displayedColumns: string[] = ['id', 'username','email', 'subscriptions','city', 'online', 'created_at','buttons'];
+  displayedColumns: string[] = ['id', 'username', 'email', 'subscriptions', 'city', 'online', 'created_at','buttons'];
   CustomerHttpDao: CustomerHttpDao | null;
   data: Customer[] = [];
   result_dialog: any;

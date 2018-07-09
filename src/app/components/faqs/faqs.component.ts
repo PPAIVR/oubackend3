@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FaqService} from "@app/components/faqs/services/faq.service";
-import {Faq} from "@app/components/faqs/models/faqs";
+import {FaqService} from '@app/components/faqs/services/faq.service';
+import {Faq} from '@app/components/faqs/models/faqs';
 
 @Component({
   selector: 'anms-faqs',
@@ -12,7 +12,7 @@ export class FaqsComponent implements OnInit {
   constructor(private faqService: FaqService) { }
 
   ngOnInit() {
-    this.faqService.getFaqs().subscribe(data => {
+    this.faqService.getItems().subscribe(data => {
       this.faqs = data.data;
     });
   }

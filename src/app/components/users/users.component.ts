@@ -11,7 +11,7 @@ import { MatTabChangeEvent } from '@angular/material';
 export class UsersComponent implements OnInit {
   active_customer: Customer;
   @ViewChild(MatTabGroup) mattab: MatTabGroup;
-  activate_detail: boolean = false;
+  activate_detail = false;
 
   constructor() { }
 

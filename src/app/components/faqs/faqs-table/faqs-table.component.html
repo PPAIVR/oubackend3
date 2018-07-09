@@ -1,6 +1,11 @@
 <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 </mat-form-field>
+<div class="ou-top-right-table">
+  <div class="percent-50"><button mat-fab color="primary">
+    <mat-icon aria-label="Agregar faq">add</mat-icon>
+  </button></div>
+</div>
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
@@ -29,7 +34,7 @@
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let row" class="ou-cell-center">
 
-        <button mat-icon-button color="primary" matTooltip="Modificar faq" matTooltipClass="ou-tooltip-blue" >
+        <button mat-icon-button color="primary" matTooltip="Modificar faq" matTooltipClass="ou-tooltip-blue" (click)="setForEdit(row)">
           <mat-icon aria-label="Editar faq">edit</mat-icon>
         </button>
 
