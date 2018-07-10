@@ -1,11 +1,12 @@
 <mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  <div class="percent-50"><input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter"></div>
 </mat-form-field>
 <div class="ou-top-right-table">
-  <div class="percent-50"><button mat-fab color="primary">
+  <div class="percent-50"><button mat-fab color="primary" (click)="setForAdd()">
     <mat-icon aria-label="Agregar faq">add</mat-icon>
   </button></div>
 </div>
+
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
@@ -21,25 +22,24 @@
     </ng-container>
 
     <ng-container matColumnDef="question">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Pregunta </th>
-      <td mat-cell *matCellDef="let row" class="ou-cell-center"> {{row.question}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="response">
-      <th mat-header-cell *matHeaderCellDef> Respouesta </th>
-      <td mat-cell *matCellDef="let row" class="ou-cell-center"> {{row.response}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear style="text-align: center;">
+        Pregunta
+      </th>
+      <td mat-cell *matCellDef="let row" class="ou-cell-center">
+        {{row.question}}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="buttons">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let row" class="ou-cell-center">
 
-        <button mat-icon-button color="primary" matTooltip="Modificar faq" matTooltipClass="ou-tooltip-blue" (click)="setForEdit(row)">
-          <mat-icon aria-label="Editar faq">edit</mat-icon>
+        <button mat-icon-button color="primary" matTooltip="Modificar consejo" matTooltipClass="ou-tooltip-blue" (click)="setForEdit(row)">
+          <mat-icon aria-label="Editar consejo">edit</mat-icon>
         </button>
 
-        <button mat-icon-button color="warn" matTooltip="Eliminar Faq!" matTooltipClass="ou-tooltip-red">
-          <mat-icon aria-label="Eliminar Faq">delete</mat-icon>
+        <button mat-icon-button color="warn" matTooltip="Eliminar Consejo!" matTooltipClass="ou-tooltip-red" (click)="doDelete(row.id)">
+          <mat-icon aria-label="Eliminar Consejo">delete</mat-icon>
         </button>
       </td>
     </ng-container>
@@ -49,5 +49,5 @@
     </tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5"></mat-paginator>
 </div>

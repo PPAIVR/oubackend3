@@ -19,11 +19,15 @@
   </mat-tab>
 
   <mat-tab label="Editar Elemento" *ngIf="editMode">
-    Edit item
+    <anms-advice-detail *ngIf="activeAdvice" [advice]="activeAdvice"></anms-advice-detail>
+    <anms-faqs-detail *ngIf="activeFaq" [faq]="activeFaq"></anms-faqs-detail>
   </mat-tab>
 
   <mat-tab label="Agregar Elemento" *ngIf="addMode">
-    Add item
+
+    <anms-advice-add *ngIf="addType=='advice'"></anms-advice-add>
+    <anms-faqs-add *ngIf="addType=='faq'"></anms-faqs-add>
+
   </mat-tab>
 
 

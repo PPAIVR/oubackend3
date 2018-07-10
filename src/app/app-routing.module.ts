@@ -15,6 +15,7 @@ import {AdvicesComponent} from "@app/components/advices/advices.component";
 import {FaqsAddComponent} from "@app/components/faqs/faqs-add/faqs-add.component";
 import {FaqsComponent} from "@app/components/faqs/faqs.component";
 import {UserDetailComponent} from "@app/components/users/user-detail/user-detail.component";
+import {AboutComponent} from "@app/static";
 
 const routes: Routes = [
   {
@@ -113,6 +114,13 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: 'login'
+  },
+  {
+    path: 'login',
+    component: AboutComponent,
+    data: {
+      title: 'OuYuan Login'
+    }
   }
 ];
 

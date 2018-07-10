@@ -31,18 +31,18 @@ export class AdviceService {
     return this.http.get<AdviceResponse>(this.usersUrl, {headers: this.customHeaders});
   }
 
-  getItem(id): Observable<Advice> {
-    return this.http.get<any>(this.usersUrl + '/' + id, {headers: this.customHeaders}).map(res => res.data);
+  getItem(id, lang_id): Observable<Advice> {
+    return this.http.get<any>(this.usersUrl + '/' + id + '?lang_id=' + lang_id, {headers: this.customHeaders}).map(res => res.data);
   }
 
   deleteItem(id): Observable<AdviceResponse> {
     return this.http.delete<AdviceResponse>(this.usersUrl + '/' + id, {headers: this.customHeaders});
   }
 
-  updateItem(advice): Observable<any> {
-    return this.http.put(this.usersUrl + '/' + advice.id, advice, {headers: this.customHeaders}).pipe(
+  updateItem(data): Observable<any> {
+    return this.http.put(this.usersUrl + '/' + data.advice.id, data, {headers: this.customHeaders}).pipe(
       tap(() => {
-        this.log(`updated advice id=${advice.id}`);
+        this.log(`updated advice id=${data.id}`);
         this.snackBar.open('Consejo actualizado con éxito.', 'cerrar', {duration: 2000});
       }),
       catchError(this.handleError<any>('updateAdvice'))

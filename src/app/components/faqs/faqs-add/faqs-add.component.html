@@ -1,3 +1,59 @@
-<p>
-  faqs-add works!
-</p>
+<div class="ou-center-card">
+  <mat-card *ngIf="faq">
+    <mat-card-title>Agregar Faq</mat-card-title>
+    <mat-card-content>
+      <table class="ou-advice-full-width" cellspacing="0"><tr>
+        <td class="ou-advice-50-width">
+          <mat-form-field class="ou-advice-full-width">
+            <input matInput placeholder="Titulo en Español" [(ngModel)]="faq.title" (ngModelChange)="faq.title=$event" id="question" #faq_title>
+          </mat-form-field>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      </table>
+      <p>&nbsp;</p>
+      <h4>Traducción:</h4>
+      <table class="ou-advice-full-width" cellspacing="0"><tr>
+        <td class="ou-advice-50-width">
+          <mat-form-field style="width:100%;">
+            <mat-select placeholder="Lenguaje" [ngModel]="faq.lang_id" (ngModelChange)="faq.lang_id=$event" #faq_lang_id>
+              <mat-option *ngFor="let lang of langs" [value]="lang.id">
+                {{lang.txt}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          &nbsp;
+        </td>
+      </tr>
+      </table>
+
+      <table class="ou-advice-full-width" cellspacing="0"><tr>
+        <td>
+          <mat-form-field class="ou-advice-full-width">
+            <input matInput placeholder="Pregunta" [(ngModel)]="faq.question" (ngModelChange)="faq.question=$event" id="question" #faq_question>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="ou-advice-full-width">
+            <input matInput placeholder="Consejo" [(ngModel)]="faq.response" (ngModelChange)="faq.response=$event" id="response" #faq_response>
+          </mat-form-field>
+        </td>
+      </tr>
+      </table>
+      <table class="ou-advice-full-width" cellspacing="0"><tr>
+        <td>
+
+          <button mat-raised-button (click)="doSave()" color="primary">Salvar</button>
+          &nbsp;
+          <button mat-stroked-button (click)="doCancel()" color="accent">Cancelar</button>
+
+        </td>
+      </tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

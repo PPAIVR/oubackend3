@@ -30,11 +30,11 @@ export class AppadminComponent implements OnInit {
       if (data.action === 'edit') {
         self.activateEditMode(data);
       }
-    });
-    this.eventsService.on('setMode', function(data) {
-      console.log(data);
-      if (data.action === 'edit') {
-        self.activateEditMode(data);
+      if (data.action === 'add') {
+        self.activateAddMode(data);
+      }
+      if (data.action === 'cancel') {
+        self.cancelButtonPress(data);
       }
     });
   }
@@ -46,7 +46,7 @@ export class AppadminComponent implements OnInit {
     if (item.item_type === 'faq') {
       this.activeAdvice = null;
       this.activeFaq = item.data;
-    } else {
+    } else if (item.item_type === 'advice') {
       this.activeFaq = null;
       this.activeAdvice = item.data;
     }
@@ -55,18 +55,28 @@ export class AppadminComponent implements OnInit {
   }
 
   activateAddMode(item) {
-    console.log('Parent:');
-    console.log(item);
     this.editMode = false;
     this.activeAdvice = null;
     this.activeFaq = null;
     if (item.item_type === 'faq') {
       this.addType = 'faq';
-    } else {
-      this.addType = 'faq';
+    } else if (item.item_type === 'advice') {
+      this.addType = 'advice';
     }
     this.addMode = true;
     this.mattab.selectedIndex = 5;
+  }
+
+  cancelButtonPress(item) {
+    this.editMode = false;
+    this.activeAdvice = null;
+    this.activeFaq = null;
+    this.addMode = false;
+    if (item.item_type === 'advice'){
+      this.mattab.selectedIndex = 1;
+    } else if (item.item_type === 'faq'){
+      this.mattab.selectedIndex = 0;
+    }
   }
 
   onLinkClick(event: MatTabChangeEvent) {

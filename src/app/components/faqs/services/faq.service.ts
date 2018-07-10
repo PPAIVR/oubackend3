@@ -4,7 +4,6 @@ import {Observable} from 'rxjs/index';
 import {environment} from '@env/environment';
 import {MatSnackBar} from '@angular/material';
 import {FaqResponse} from '@app/components/faqs/models/faqs';
-import {Advice, AdviceResponse} from '@app/components/advices/models/advices';
 import {of} from 'rxjs/internal/observable/of';
 import {catchError, tap} from 'rxjs/operators';
 
@@ -30,21 +29,21 @@ export class FaqService {
     return this.http.get<FaqResponse>(this.usersUrl, {headers: this.customHeaders});
   }
 
-  getItem(id): Observable<Advice> {
-    return this.http.get<any>(this.usersUrl + '/' + id, {headers: this.customHeaders}).map(res => res.data);
+  getItem(id, lang_id): Observable<Faq> {
+    return this.http.get<any>(this.usersUrl + '/' + id + '?lang_id=' + lang_id, {headers: this.customHeaders}).map(res => res.data);
   }
 
-  deleteItem(id): Observable<AdviceResponse> {
-    return this.http.delete<AdviceResponse>(this.usersUrl + '/' + id, {headers: this.customHeaders});
+  deleteItem(id): Observable<FaqResponse> {
+    return this.http.delete<FaqResponse>(this.usersUrl + '/' + id, {headers: this.customHeaders});
   }
 
-  updateItem(advice): Observable<any> {
-    return this.http.put(this.usersUrl + '/' + advice.id, advice, {headers: this.customHeaders}).pipe(
+  updateItem(data): Observable<any> {
+    return this.http.put(this.usersUrl + '/' + data.advice.id, data, {headers: this.customHeaders}).pipe(
       tap(() => {
-        this.log(`updated advice id=${advice.id}`);
-        this.snackBar.open('Faq actualizada con éxito.', 'cerrar', {duration: 2000});
+        this.log(`updated advice id=${data.id}`);
+        this.snackBar.open('Consejo actualizado con éxito.', 'cerrar', {duration: 2000});
       }),
-      catchError(this.handleError<any>('updateAdvice'))
+      catchError(this.handleError<any>('updateFaq'))
     );
   }
 
@@ -52,9 +51,9 @@ export class FaqService {
     return this.http.post(this.usersUrl, advice, {headers: this.customHeaders}).pipe(
       tap(() => {
         this.log(`add advice id=${advice.id}`);
-        this.snackBar.open('Faq agregada con éxito.', 'cerrar', {duration: 2000});
+        this.snackBar.open('Consejo agregado con éxito.', 'cerrar', {duration: 2000});
       }),
-      catchError(this.handleError<any>('addAdvice'))
+      catchError(this.handleError<any>('addFaq'))
     );
   }
 
